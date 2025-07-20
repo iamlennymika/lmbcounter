@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wins Overlay</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 64px;
+      text-align: center;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="wins">WINS: 0/0</div>
+
+  <script>
+    function updateFromStorage() {
+      let wins = parseInt(localStorage.getItem('wins') || '0', 10);
+      let total = parseInt(localStorage.getItem('total') || '0', 10);
+      document.getElementById('wins').textContent = `WINS: ${wins}/${total}`;
+    }
+
+    // Update alle 500ms
+    setInterval(updateFromStorage, 500);
+
+    updateFromStorage(); // Initial
+  </script>
+</body>
+</html>
