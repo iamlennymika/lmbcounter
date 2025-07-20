@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wins Control</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      background: #f0f0f0;
+    }
+
+    button {
+      font-size: 28px;
+      padding: 20px 40px;
+      margin: 15px;
+      border: none;
+      border-radius: 8px;
+      background-color: #000;
+      color: #fff;
+      width: 80%;
+      cursor: pointer;
+    }
+
+    button:active {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h2>WINS CONTROL</h2>
+  <button onclick="addWin()">+1 WIN</button><br />
+  <button onclick="addRound()">+1 ROUND</button><br />
+  <button onclick="reset()">RESET</button>
+
+  <script>
+    function getInt(key) {
+      return parseInt(localStorage.getItem(key) || '0', 10);
+    }
+
+    function setInt(key, value) {
+      localStorage.setItem(key, value.toString());
+    }
+
+    function addWin() {
+      let wins = getInt('wins') + 1;
+      let total = getInt('total') + 1;
+      setInt('wins', wins);
+      setInt('total', total);
+    }
+
+    function addRound() {
+      let total = getInt('total') + 1;
+      setInt('total', total);
+    }
+
+    function reset() {
+      setInt('wins', 0);
+      setInt('total', 0);
+    }
+  </script>
+</body>
+</html>
